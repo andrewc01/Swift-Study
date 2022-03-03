@@ -99,3 +99,149 @@ enum UIStyle {
 }
 
 var style: UIStyle = .light
+
+let anotherAge = 16
+    
+if anotherAge < 12 {
+    print("You can't vote.")
+} else if age < 18 {
+    print("You can vote soon.")
+} else {
+    print("You can vote now.")
+}
+
+let temp = 26
+
+if temp > 20 || temp < 30 {
+    print("It's a nice day.")
+}
+
+enum Weather {
+    case sun, rain, wind
+}
+
+let forecast = Weather.sun
+
+switch forecast {
+case .sun:
+    print("It's a nice day.")
+case .rain:
+    print("Pack an umbrella")
+default:
+    print("Should be okay.")
+}
+
+let thirdAge = 18
+let canVote = age >= 18 ? "Yes" : "No"
+print(canVote)
+
+let platforms = ["iOS", "macOS", "tvOS", "watchOS"]
+
+for os in platforms {
+    print("Swift works on \(os)")
+}
+
+for i in 1...12 {
+    print("5 x \(i) is \(5 * i)")
+}
+
+var lyric = "Haters gonna"
+
+for _ in 1...5 {
+    lyric += " hate"
+}
+
+print(lyric)
+
+var count = 10
+
+while count > 0 {
+    print("\(count)...")
+    count -= 1
+}
+
+print("Go!")
+
+let files = ["me.jpg", "work.txt", "sohpie.jpg"]
+
+for file in files {
+    if file.hasPrefix(".jpg") == false {
+        continue
+    }
+    print("Found picture: \(file)")
+}
+
+func printTimesTable(number: Int) {
+    for i in 1...12 {
+        print("\(i) x \(number) is \(i * number)")
+    }
+}
+
+printTimesTable(number: 8)
+
+func rollDice() -> Int {
+    Int.random(in: 1...6)
+}
+
+let result = rollDice()
+print(result)
+
+func getUser() -> (firstName: String, lastName: String) {
+    (firstName: "Taylor", lastName: "Swift")
+}
+
+let (firstName, _) = getUser()
+print("Name: \(firstName)")
+
+func isUppercase(_ string: String) -> Bool {
+    string == string.uppercased()
+}
+
+let string = "HELLO WORLD"
+let newResult = isUppercase(string)
+
+func newPrintTimesTable(for number: Int) {
+    for i in 1...12 {
+        print("\(i) x \(number) is \(i * number)")
+    }
+}
+
+newPrintTimesTable(for: 5)
+
+func greet(_ person: String, formal: Bool = false) {
+    if formal {
+        print("Welcome, \(person)")
+    } else {
+        print("Hi, \(person)")
+    }
+}
+
+greet("Tim", formal: true)
+greet("Taylor")
+
+enum PasswordError: Error {
+    case short, obvious
+}
+
+func checkPassword(_ password: String) throws -> String {
+    if password.count < 5 {
+        throw PasswordError.short
+    }
+    if password == "12345" {
+        throw PasswordError.obvious
+    }
+    if password.count < 10 {
+        return "OK"
+    } else {
+        return "Good"
+    }
+}
+
+do {
+    let passResult = try checkPassword("12345")
+    print("Rating: \(passResult)")
+} catch PasswordError.obvious {
+    print("I have the same combination on my luggage!")
+} catch {
+    print("There was an error.")
+}
