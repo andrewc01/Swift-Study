@@ -1,4 +1,5 @@
 import Cocoa
+import os
 
 // Learning Swift with 100 Days of SwiftUI
 
@@ -245,3 +246,57 @@ do {
 } catch {
     print("There was an error.")
 }
+
+let sayHello = { (name: String) -> String in
+    "Hi, \(name)"
+}
+
+let team = ["Gloria", "Suzanne", "Tiffany", "Tasha"]
+
+let onlyT = team.filter { $0.hasPrefix("T") }
+
+print(onlyT)
+
+struct Album {
+    let title: String
+    let artist: String
+    var isReleased = true
+    
+    func printSummary() {
+        print("\(title) by \(artist)")
+    }
+    mutating func removeFromSale() {
+        isReleased = false
+    }
+}
+
+let red = Album(title: "Red", artist: "Taylor Swift")
+print(red.title)
+red.printSummary()
+
+struct AnotherEmployee {
+    let name: String
+    var vacationAllowed = 14
+    var vacationTaken = 0
+    
+    var vacationRemaining: Int {
+        get {
+            vacationAllowed - vacationTaken
+        }
+        set {
+            vacationAllowed = vacationTaken + newValue
+        }
+    }
+}
+
+struct Game {
+    var score = 0 {
+        didSet {
+            print("Score is now \(score)")
+        }
+    }
+}
+
+var game = Game()
+game.score += 10
+game.score -= 3
