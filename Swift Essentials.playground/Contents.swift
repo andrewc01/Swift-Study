@@ -300,3 +300,120 @@ struct Game {
 var game = Game()
 game.score += 10
 game.score -= 3
+
+struct anotherPlayer {
+    let name: String
+    let number: Int
+    
+    init(name: String) {
+        self.name = name
+        number = Int.random(in: 1...99)
+    }
+}
+
+struct BankAccount {
+    private(set) var funds = 0
+    
+    mutating func deposit(amount: Int) {
+        funds += amount
+    }
+    
+    mutating func withdraw(amount: Int) -> Bool {
+        if funds > amount {
+            funds -= amount
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+let account = BankAccount(funds: 100)
+print(account.funds)
+
+struct AppData {
+    static let version = "1.3 beta 2"
+    static let settingsFile = "settings.json"
+}
+
+print(AppData.version)
+
+class Employee {
+    let hours: Int
+    
+    init(hours: Int) {
+        self.hours = hours
+    }
+    func printSummary() {
+        print("I work \(hours) hours a day.")
+    }
+}
+
+class Developer: Employee {
+    func work() {
+        print("I'm coding for \(hours) hours a day.")
+    }
+    override func printSummary() {
+        print("I spend \(hours) hours a day fighting over tabs vs spaces.")
+    }
+}
+
+let novall = Developer(hours: 8)
+novall.work()
+novall.printSummary()
+
+class Vehicle {
+    let isElectric: Bool
+    
+    init(isElectric: Bool) {
+        self.isElectric = isElectric
+    }
+}
+
+class Car: Vehicle {
+    let isConvertible: Bool
+    
+    init(isElectric: Bool, isConvertible: Bool) {
+        self.isConvertible = isConvertible
+        super.init(isElectric: isElectric)
+    }
+}
+
+class Actor {
+    var name = "Nicolas Cage"
+}
+
+var actor1 = Actor()
+var actor2 = actor1
+
+actor2.name = "Tom Cruise"
+print(actor1.name)
+print(actor2.name)
+
+class Site {
+    let id: Int
+    
+    init(id: Int) {
+        self.id = id
+        print("Site \(id): I've been created")
+    }
+    
+    deinit {
+        print("Site \(id): I've been destroyed!")
+    }
+}
+
+for i in 1...3 {
+    let site = Site(id: i)
+    print("Site \(site.id): I'm in control!")
+}
+
+class Singer {
+    var name = "Adele"
+}
+
+let singer = Singer()
+singer.name = "Justin"
+print(singer.name)
+
+
